@@ -78,7 +78,7 @@ Insertion sort’un geliştirilmiş halidir. Belirli aralıklarla (gap) karşıl
 - Orta seviyede performans sunar
 - Zaman karmaşıklığı değişkendir
 
-## Performans ÖlçümüHAZIRLAYAN:
+## Performans Ölçümü:
 Sıralama algoritmalarının çalışma süresi `time` modülü kullanılarak ölçülmektedir.
 Kodda kullanılan mantık:
 
@@ -93,5 +93,5 @@ def zaman_olc(fonksiyon, arr):
 
 python main.py
 
-HAZIRLAYAN:ENES ALKİRAZ/25019921033
+##HAZIRLAYAN:ENES ALKİRAZ/25019921033
 
