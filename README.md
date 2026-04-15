@@ -92,7 +92,7 @@ def zaman_olc(fonksiyon, arr):
 [64, 34, 25, 12, 22, 11, 90, 5, 45, 1]
 
 python main.py
-'''
+---
 ### 👨‍💻 Hazırlayan
 **Enes ALKİRAZ** 🆔 Öğrenci No: **25019921033** 🏫 Bartın Üniversitesi - Yapay Zeka Operatörlüğü
 
