@@ -1,164 +1,70 @@
 # veri-yapilari-odev-arama-siralama
 Veri Yapıları Ve Algoritma dersi arama ve sıralama algoritmaları projesi
-#Veri Yapıları Ödevi – Arama ve Sıralama Algoritmaları
-Proje Amacı
+# 🚀 Python Algoritma Rehberi: Arama ve Sıralama
 
-Bu projede farklı arama ve sıralama algoritmalarının Python dili ile uygulanması, çalışma mantıklarının anlaşılması ve performanslarının karşılaştırılması amaçlanmıştır.
+Bu depo, bilgisayar bilimleri eğitiminde en çok karşımıza çıkan temel **Arama** ve **Sıralama** algoritmalarını derinlemesine incelemek ve performanslarını karşılaştırmak amacıyla oluşturulmuştur.
 
-Arama Algoritmaları
-Linear Search (Doğrusal Arama)
-Listenin başından başlayarak tüm elemanları tek tek kontrol eder.
-Sıralı olma şartı yoktur.
-Zaman Karmaşıklığı: O(n)
-Binary Search (İkili Arama)
-Listeyi sürekli ikiye bölerek arama yapar.
-Sadece sıralı listelerde çalışır.
-Zaman Karmaşıklığı: O(log n)
-Jump Search (Adımlamalı Arama)
-Liste üzerinde belirli aralıklarla (√n) zıplayarak ilerler.
-Uygun blok bulunduğunda doğrusal arama yapar.
-Zaman Karmaşıklığı: O(√n)
-Sıralama Algoritmaları
-Bubble Sort
-Komşu elemanları karşılaştırarak büyük olanı sağa iter.
-Basit ama büyük verilerde yavaştır.
-Zaman Karmaşıklığı: O(n²)
-Selection Sort
-Her adımda en küçük elemanı seçip başa yerleştirir.
-Zaman Karmaşıklığı: O(n²)
-Insertion Sort
-Elemanları doğru konuma yerleştirerek sıralar.
-Küçük veri setlerinde etkilidir.
-Zaman Karmaşıklığı: O(n²)
-Merge Sort
-Böl ve fethet mantığıyla çalışır.
-Listeyi parçalara ayırır ve sıralı şekilde birleştirir.
-Zaman Karmaşıklığı: O(n log n)
-Space Complexity: O(n)
-Quick Sort
-Pivot seçerek listeyi ikiye böler.
-Ortalama durumda çok hızlıdır.
-Zaman Karmaşıklığı: O(n log n)
-Space Complexity: O(n)
-Shell Sort
-Insertion Sort’un geliştirilmiş halidir.
-Belirli aralıklarla karşılaştırma yapar.
-Zaman Karmaşıklığı: O(n log n) ile O(n²) arası
-Algoritmaların Karşılaştırılması
-Algoritma	Tür	Zaman Karmaşıklığı
-Linear Search	Arama	O(n)
-Binary Search	Arama	O(log n)
-Jump Search	Arama	O(√n)
-Bubble Sort	Sıralama	O(n²)
-Selection Sort	Sıralama	O(n²)
-Insertion Sort	Sıralama	O(n²)
-Merge Sort	Sıralama	O(n log n)
-Quick Sort	Sıralama	O(n log n)
-Shell Sort	Sıralama	O(n log n) - O(n²)
-Performans Analizi
+Kod içerisinde her fonksiyon; **zaman karmaşıklığı**, **çalışma prensibi** ve **ideal kullanım senaryoları** ile birlikte belgelenmiştir.
 
-Kod içerisinde time modülü kullanılarak her sıralama algoritmasının çalışma süresi ölçülmektedir.
+---
 
-Genel Sonuçlar
-Basit algoritmalar (Bubble, Selection, Insertion) büyük verilerde yavaştır.
-Gelişmiş algoritmalar (Merge, Quick, Shell) daha hızlıdır.
-Quick Sort ve Merge Sort genelde en iyi performansı gösterir.
-Nasıl Çalıştırılır
-Python yüklü olmalıdır.
-Dosyayı indiriniz.
-Terminal veya VS Code üzerinden çalıştırınız:
-python dosya_adi.py
+## 📂 Algoritma Detayları
 
-Örnek Çıktı
+### 1. Arama Algoritmaları (Searching Algorithms)
+Veri yapıları içinde hedeflenen elemanın konumunu bulmaya yarayan yöntemlerdir.
 
-Program çalıştırıldığında:
+| Algoritma | Zaman Karmaşıklığı (Best/Avg/Worst) | Özellik |
+| :--- | :---: | :--- |
+| **Linear Search** | $O(1) / O(n) / O(n)$ | Sıralama gerektirmez, küçük listelerde idealdir. |
+| **Binary Search** | $O(1) / O(\log n) / O(\log n)$ | **Sıralı liste şarttır.** Çok hızlı sonuç verir. |
+| **Jump Search** | $O(1) / O(\sqrt{n}) / O(\sqrt{n})$ | Binary ve Linear arasında bir orta yoldur. |
 
-Orijinal liste ekrana yazdırılır
-Tüm sıralama algoritmaları çalışır
-Arama algoritmaları indeks döndürür
-Performans karşılaştırması ekrana basılır
-Not
+---
 
-Bu proje eğitim amaçlı hazırlanmıştır.
-Algoritmaların çalışma mantığını anlamak için yorum satırları eklenmiştir.
+### 2. Sıralama Algoritmaları (Sorting Algorithms)
+Düzensiz bir veri kümesini belirli bir kurala göre (sayısal veya alfabetik) dizen yöntemlerdir.
 
+#### 🐢 Yavaş Algoritmalar ($O(n^2)$)
+Genellikle eğitim amaçlı ve küçük veri setlerinde tercih edilirler:
+* **Bubble Sort:** Komşu elemanları sürekli takas ederek en büyük elemanı sona iter.
+* **Selection Sort:** Her turda listenin en küçüğünü "seçer" ve en başa koyar.
+* **Insertion Sort:** Bir kart oyununda kağıtları dizmek gibi, her elemanı sıralı kısmın içine yerleştirir.
 
+#### ⚡ Hızlı Algoritmalar ($O(n \log n)$)
+Büyük veri setlerinde ve profesyonel yazılımlarda tercih edilen yöntemlerdir:
+* **Merge Sort:** "Böl ve Yönet" prensibiyle çalışır. Listeyi tek eleman kalana kadar böler ve sıralayarak birleştirir.
+* **Quick Sort:** Bir pivot noktası belirler ve elemanları bu pivottan küçük/büyük olmasına göre gruplandırır.
+* **Shell Sort:** Insertion Sort'un uzak elemanları karşılaştırabilen daha verimli bir versiyonudur.
 
+---
 
-Veri Yapıları Ödevi – Arama ve Sıralama Algoritmaları
-Proje Amacı
+## 🛠️ Kurulum ve Çalıştırma
 
-Bu projede farklı arama ve sıralama algoritmalarının Python dili ile uygulanması, çalışma mantıklarının anlaşılması ve performanslarının karşılaştırılması amaçlanmıştır.
+Kodun çalışması için standart Python kütüphanesi yeterlidir (herhangi bir dış kütüphane yüklemenize gerek yoktur).
 
-Arama Algoritmaları
-Linear Search (Doğrusal Arama)
-Listenin başından başlayarak tüm elemanları tek tek kontrol eder.
-Sıralı olma şartı yoktur.
-Zaman Karmaşıklığı: O(n)
-Binary Search (İkili Arama)
-Listeyi sürekli ikiye bölerek arama yapar.
-Sadece sıralı listelerde çalışır.
-Zaman Karmaşıklığı: O(log n)
-Jump Search (Adımlamalı Arama)
-Liste üzerinde belirli aralıklarla (√n) zıplayarak ilerler.
-Uygun blok bulunduğunda doğrusal arama yapar.
-Zaman Karmaşıklığı: O(√n)
-Sıralama Algoritmaları
-Bubble Sort
-Komşu elemanları karşılaştırarak büyük olanı sağa iter.
-Basit ama büyük verilerde yavaştır.
-Zaman Karmaşıklığı: O(n²)
-Selection Sort
-Her adımda en küçük elemanı seçip başa yerleştirir.
-Zaman Karmaşıklığı: O(n²)
-Insertion Sort
-Elemanları doğru konuma yerleştirerek sıralar.
-Küçük veri setlerinde etkilidir.
-Zaman Karmaşıklığı: O(n²)
-Merge Sort
-Böl ve fethet mantığıyla çalışır.
-Listeyi parçalara ayırır ve sıralı şekilde birleştirir.
-Zaman Karmaşıklığı: O(n log n)
-Space Complexity: O(n)
-Quick Sort
-Pivot seçerek listeyi ikiye böler.
-Ortalama durumda çok hızlıdır.
-Zaman Karmaşıklığı: O(n log n)
-Space Complexity: O(n)
-Shell Sort
-Insertion Sort’un geliştirilmiş halidir.
-Belirli aralıklarla karşılaştırma yapar.
-Zaman Karmaşıklığı: O(n log n) ile O(n²) arası
-Algoritmaların Karşılaştırılması
-Algoritma	Tür	Zaman Karmaşıklığı
-Linear Search	Arama	O(n)
-Binary Search	Arama	O(log n)
-Jump Search	Arama	O(√n)
-Bubble Sort	Sıralama	O(n²)
-Selection Sort	Sıralama	O(n²)
-Insertion Sort	Sıralama	O(n²)
-Merge Sort	Sıralama	O(n log n)
-Quick Sort	Sıralama	O(n log n)
-Shell Sort	Sıralama	O(n log n) - O(n²)
-Performans Analizi
+1.  Depoyu klonlayın:
+    ```bash
+    git clone [https://github.com/kullaniciadin/proje-adin.git](https://github.com/kullaniciadin/proje-adin.git)
+    ```
+2.  Dosyayı çalıştırın:
+    ```bash
+    python main.py
+    ```
 
-Kod içerisinde time modülü kullanılarak her sıralama algoritmasının çalışma süresi ölçülmektedir.
+---
 
-Genel Sonuçlar
-Basit algoritmalar (Bubble, Selection, Insertion) yavaştır.
-Gelişmiş algoritmalar (Merge, Quick, Shell) daha hızlıdır.
-Quick Sort ve Merge Sort genelde en iyi performansı verir.
-Nasıl Çalıştırılır
-Python yüklü olmalıdır
-Dosyayı indir
-Terminal veya VS Code’da çalıştır:
-python dosya_adi.py
+## 📊 Performans Analizi
 
-Örnek Çıktı
-Orijinal liste ekrana yazdırılır
-Sıralama algoritmaları çalışır
-Arama algoritmaları sonuç döndürür
-Performans karşılaştırması gösterilir
-Not
+Kod içerisindeki `zaman_olc` fonksiyonu, algoritmaların gerçek dünya performansını ölçer. 
 
-Bu proje eğitim amaçlı hazırlanmıştır ve algoritmaların mantığını öğretmeyi hedefler.
+> **Not:** $O(n^2)$ olan algoritmalar (Bubble, Selection) veri seti büyüdükçe (örneğin 10.000 eleman) dramatik bir şekilde yavaşlarken; $O(n \log n)$ olanlar (Quick, Merge) saniyeler içinde işlemi tamamlar.
+
+### Test Çıktısı Örneği:
+```text
+------------------------------------------------------------
+Algoritma Adı        | Geçen Süre (Saniye)
+------------------------------------------------------------
+bubble_sort          | 0.000018
+merge_sort           | 0.000009
+quick_sort           | 0.000005
+------------------------------------------------------------
