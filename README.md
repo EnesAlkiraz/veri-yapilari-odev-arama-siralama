@@ -58,13 +58,3 @@ Kodun çalışması için standart Python kütüphanesi yeterlidir (herhangi bir
 Kod içerisindeki `zaman_olc` fonksiyonu, algoritmaların gerçek dünya performansını ölçer. 
 
 > **Not:** $O(n^2)$ olan algoritmalar (Bubble, Selection) veri seti büyüdükçe (örneğin 10.000 eleman) dramatik bir şekilde yavaşlarken; $O(n \log n)$ olanlar (Quick, Merge) saniyeler içinde işlemi tamamlar.
-
-### Test Çıktısı Örneği:
-```text
-------------------------------------------------------------
-Algoritma Adı        | Geçen Süre (Saniye)
-------------------------------------------------------------
-bubble_sort          | 0.000018
-merge_sort           | 0.000009
-quick_sort           | 0.000005
-------------------------------------------------------------
