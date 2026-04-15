@@ -1,5 +1,164 @@
 # veri-yapilari-odev-arama-siralama
 Veri Yapıları Ve Algoritma dersi arama ve sıralama algoritmaları projesi
-Daha iyisini, yani daha kurumsal ve teknik bir Dökümantasyon (README) yapısını aşağıda bulabilirsin. Bu sürümde; görsel hiyerarşiyi artırmak için tabloları, teknik notları ve mimari detayları ön plana çıkardım.## PYTHON ALGORİTMA REHBERİ: VERİ YAPILARI VE ARAMA-SIRALAMABu proje, temel bilgisayar bilimi algoritmalarının Python 3 ortamında optimize edilmiş implementasyonlarını içerir. Eğitim ve performans analizi odaklı geliştirilmiştir.## 1. PROJE ÖZELLİKLERİ VE MİMARİProje, algoritmaların sadece kodlamasını değil, aynı zamanda çalışma karakteristiklerini analiz eden bir test ortamını sunar:Zaman Karmaşıklığı Analizi: Algoritmaların Big O gösterimi ile teorik sınırları.Gerçek Zamanlı Profilleme: time modülü ile saniye/mikrosaniye hassasiyetinde ölçüm.Bellek Dostu Yaklaşım: Orijinal veriyi korumak için .copy() metodolojisi ile saf fonksiyon (pure function) prensibi.## 2. SIRALAMA ALGORİTMALARI (SORTING)Veri setlerini sıralamak için kullanılan algoritmaların karşılaştırmalı özeti:AlgoritmaEn İyi (Best)Ortalama (Avg)En Kötü (Worst)StabiliteQuick Sort$O(n \log n)$$O(n \log n)$$O(n^2)$HayırMerge Sort$O(n \log n)$$O(n \log n)$$O(n \log n)$EvetInsertion Sort$O(n)$$O(n^2)$$O(n^2)$EvetBubble Sort$O(n)$$O(n^2)$$O(n^2)$Evet## Teknik DetaylarQuick Sort: Geniş veri setlerinde (Big Data) en çok tercih edilen yöntemdir.Shell Sort: Aralıklı karşılaştırma (gap) tekniğiyle büyük listelerde Insertion Sort'un darboğazlarını aşar.Selection Sort: Minimum bellek takası (swap) gerektiren durumlarda avantajlıdır.## 3. ARAMA ALGORİTMALARI (SEARCHING)Veri setinde hedef elemanı konumlandırmak için kullanılan stratejiler:## A. İkili Arama (Binary Search)Ön Şart: Liste mutlaka sıralı olmalıdır.Karmaşıklık: $O(\log n)$Mantık: Her adımda arama uzayını $\%50$ oranında daraltır.## B. Adımlamalı Arama (Jump Search)Karmaşıklık: $O(\sqrt{n})$Mantık: Bloklar halinde ilerleyerek hedef aralığı bulur ve yerel bir doğrusal tarama yapar.## C. Doğrusal Arama (Linear Search)Karmaşıklık: $O(n)$Kullanım: Küçük veya sırasız veri setleri için uygundur.## 4. KURULUM VE KULLANIM TALİMATLARI## GereksinimlerProje herhangi bir üçüncü taraf kütüphane (NumPy, Pandas vb.) gerektirmez; standart Python 3 kitaplığı yeterlidir.## Hızlı BaşlatmaTerminal veya komut satırı üzerinden aşağıdaki komutu çalıştırarak performans raporunu görüntüleyebilirsiniz:Bash# Scripti doğrudan çalıştırın
-python main_algorithms.py
-## 5. PERFORMANS RAPORLAMASIScript çalıştırıldığında aşağıdaki formatta bir analiz çıktısı üretilir:Analitik Not: Sıralama işlemlerinde kullanılan zaman_olc fonksiyonu, sistem yüküne bağlı değişkenlikleri minimize etmek adına izole edilmiş ortamlarda test edilmelidir.## 6. KATKIDA BULUNMA (CONTRIBUTING)Teknik iyileştirmeler veya yeni algoritma önerileri için lütfen bir PR (Pull Request) oluşturun. Özellikle Heap Sort veya Radix Sort gibi gelişmiş algoritmaların eklenmesi beklenmektedir.Geliştirici: [İsminiz/GitHub Kullanıcı Adınız]
+#Veri Yapıları Ödevi – Arama ve Sıralama Algoritmaları
+Proje Amacı
+
+Bu projede farklı arama ve sıralama algoritmalarının Python dili ile uygulanması, çalışma mantıklarının anlaşılması ve performanslarının karşılaştırılması amaçlanmıştır.
+
+Arama Algoritmaları
+Linear Search (Doğrusal Arama)
+Listenin başından başlayarak tüm elemanları tek tek kontrol eder.
+Sıralı olma şartı yoktur.
+Zaman Karmaşıklığı: O(n)
+Binary Search (İkili Arama)
+Listeyi sürekli ikiye bölerek arama yapar.
+Sadece sıralı listelerde çalışır.
+Zaman Karmaşıklığı: O(log n)
+Jump Search (Adımlamalı Arama)
+Liste üzerinde belirli aralıklarla (√n) zıplayarak ilerler.
+Uygun blok bulunduğunda doğrusal arama yapar.
+Zaman Karmaşıklığı: O(√n)
+Sıralama Algoritmaları
+Bubble Sort
+Komşu elemanları karşılaştırarak büyük olanı sağa iter.
+Basit ama büyük verilerde yavaştır.
+Zaman Karmaşıklığı: O(n²)
+Selection Sort
+Her adımda en küçük elemanı seçip başa yerleştirir.
+Zaman Karmaşıklığı: O(n²)
+Insertion Sort
+Elemanları doğru konuma yerleştirerek sıralar.
+Küçük veri setlerinde etkilidir.
+Zaman Karmaşıklığı: O(n²)
+Merge Sort
+Böl ve fethet mantığıyla çalışır.
+Listeyi parçalara ayırır ve sıralı şekilde birleştirir.
+Zaman Karmaşıklığı: O(n log n)
+Space Complexity: O(n)
+Quick Sort
+Pivot seçerek listeyi ikiye böler.
+Ortalama durumda çok hızlıdır.
+Zaman Karmaşıklığı: O(n log n)
+Space Complexity: O(n)
+Shell Sort
+Insertion Sort’un geliştirilmiş halidir.
+Belirli aralıklarla karşılaştırma yapar.
+Zaman Karmaşıklığı: O(n log n) ile O(n²) arası
+Algoritmaların Karşılaştırılması
+Algoritma	Tür	Zaman Karmaşıklığı
+Linear Search	Arama	O(n)
+Binary Search	Arama	O(log n)
+Jump Search	Arama	O(√n)
+Bubble Sort	Sıralama	O(n²)
+Selection Sort	Sıralama	O(n²)
+Insertion Sort	Sıralama	O(n²)
+Merge Sort	Sıralama	O(n log n)
+Quick Sort	Sıralama	O(n log n)
+Shell Sort	Sıralama	O(n log n) - O(n²)
+Performans Analizi
+
+Kod içerisinde time modülü kullanılarak her sıralama algoritmasının çalışma süresi ölçülmektedir.
+
+Genel Sonuçlar
+Basit algoritmalar (Bubble, Selection, Insertion) büyük verilerde yavaştır.
+Gelişmiş algoritmalar (Merge, Quick, Shell) daha hızlıdır.
+Quick Sort ve Merge Sort genelde en iyi performansı gösterir.
+Nasıl Çalıştırılır
+Python yüklü olmalıdır.
+Dosyayı indiriniz.
+Terminal veya VS Code üzerinden çalıştırınız:
+python dosya_adi.py
+
+Örnek Çıktı
+
+Program çalıştırıldığında:
+
+Orijinal liste ekrana yazdırılır
+Tüm sıralama algoritmaları çalışır
+Arama algoritmaları indeks döndürür
+Performans karşılaştırması ekrana basılır
+Not
+
+Bu proje eğitim amaçlı hazırlanmıştır.
+Algoritmaların çalışma mantığını anlamak için yorum satırları eklenmiştir.
+
+
+
+
+Veri Yapıları Ödevi – Arama ve Sıralama Algoritmaları
+Proje Amacı
+
+Bu projede farklı arama ve sıralama algoritmalarının Python dili ile uygulanması, çalışma mantıklarının anlaşılması ve performanslarının karşılaştırılması amaçlanmıştır.
+
+Arama Algoritmaları
+Linear Search (Doğrusal Arama)
+Listenin başından başlayarak tüm elemanları tek tek kontrol eder.
+Sıralı olma şartı yoktur.
+Zaman Karmaşıklığı: O(n)
+Binary Search (İkili Arama)
+Listeyi sürekli ikiye bölerek arama yapar.
+Sadece sıralı listelerde çalışır.
+Zaman Karmaşıklığı: O(log n)
+Jump Search (Adımlamalı Arama)
+Liste üzerinde belirli aralıklarla (√n) zıplayarak ilerler.
+Uygun blok bulunduğunda doğrusal arama yapar.
+Zaman Karmaşıklığı: O(√n)
+Sıralama Algoritmaları
+Bubble Sort
+Komşu elemanları karşılaştırarak büyük olanı sağa iter.
+Basit ama büyük verilerde yavaştır.
+Zaman Karmaşıklığı: O(n²)
+Selection Sort
+Her adımda en küçük elemanı seçip başa yerleştirir.
+Zaman Karmaşıklığı: O(n²)
+Insertion Sort
+Elemanları doğru konuma yerleştirerek sıralar.
+Küçük veri setlerinde etkilidir.
+Zaman Karmaşıklığı: O(n²)
+Merge Sort
+Böl ve fethet mantığıyla çalışır.
+Listeyi parçalara ayırır ve sıralı şekilde birleştirir.
+Zaman Karmaşıklığı: O(n log n)
+Space Complexity: O(n)
+Quick Sort
+Pivot seçerek listeyi ikiye böler.
+Ortalama durumda çok hızlıdır.
+Zaman Karmaşıklığı: O(n log n)
+Space Complexity: O(n)
+Shell Sort
+Insertion Sort’un geliştirilmiş halidir.
+Belirli aralıklarla karşılaştırma yapar.
+Zaman Karmaşıklığı: O(n log n) ile O(n²) arası
+Algoritmaların Karşılaştırılması
+Algoritma	Tür	Zaman Karmaşıklığı
+Linear Search	Arama	O(n)
+Binary Search	Arama	O(log n)
+Jump Search	Arama	O(√n)
+Bubble Sort	Sıralama	O(n²)
+Selection Sort	Sıralama	O(n²)
+Insertion Sort	Sıralama	O(n²)
+Merge Sort	Sıralama	O(n log n)
+Quick Sort	Sıralama	O(n log n)
+Shell Sort	Sıralama	O(n log n) - O(n²)
+Performans Analizi
+
+Kod içerisinde time modülü kullanılarak her sıralama algoritmasının çalışma süresi ölçülmektedir.
+
+Genel Sonuçlar
+Basit algoritmalar (Bubble, Selection, Insertion) yavaştır.
+Gelişmiş algoritmalar (Merge, Quick, Shell) daha hızlıdır.
+Quick Sort ve Merge Sort genelde en iyi performansı verir.
+Nasıl Çalıştırılır
+Python yüklü olmalıdır
+Dosyayı indir
+Terminal veya VS Code’da çalıştır:
+python dosya_adi.py
+
+Örnek Çıktı
+Orijinal liste ekrana yazdırılır
+Sıralama algoritmaları çalışır
+Arama algoritmaları sonuç döndürür
+Performans karşılaştırması gösterilir
+Not
+
+Bu proje eğitim amaçlı hazırlanmıştır ve algoritmaların mantığını öğretmeyi hedefler.
