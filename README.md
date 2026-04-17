@@ -1,5 +1,3 @@
-# veri-yapilari-odev-arama-siralama
-Veri Yapıları Ve Algoritma dersi arama ve sıralama algoritmaları projesi
 # Arama ve Sıralama Algoritmaları – Python Uygulaması
 
 ## Genel Bakış
@@ -95,4 +93,5 @@ python main.py
 ---
 ### 👨‍💻 Hazırlayan
 **Enes ALKİRAZ** 🆔 Öğrenci No: **25019921033** 🏫 Bartın Üniversitesi - Yapay Zeka Operatörlüğü
+Veri Yapıları Ve Algoritma dersi arama ve sıralama algoritmaları projesi
 
