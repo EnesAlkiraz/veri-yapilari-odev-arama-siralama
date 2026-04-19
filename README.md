@@ -1,20 +1,6 @@
-# 🔍 Arama ve Sıralama Algoritmaları
+# Arama ve Sıralama Algoritmaları
 
 Python ile geliştirilmiş, temel arama ve sıralama algoritmalarını bir arada sunan eğitim odaklı bir proje. Her algoritma; çalışma mantığı, zaman karmaşıklığı ve kullanım senaryoları açısından detaylıca açıklanmış ve yorumlanmıştır.
-
----
-
-## 📋 İçindekiler
-
-- [Proje Hakkında](#proje-hakkında)
-- [Algoritmalara Genel Bakış](#algoritmalara-genel-bakış)
-- [Arama Algoritmaları](#arama-algoritmaları)
-- [Sıralama Algoritmaları](#sıralama-algoritmaları)
-- [Big-O Karmaşıklık Tablosu](#big-o-karmaşıklık-tablosu)
-- [Algoritma Karşılaştırması](#algoritma-karşılaştırması)
-- [Nasıl Çalıştırılır](#nasıl-çalıştırılır)
-
----
 
 ## Proje Hakkında
 
@@ -74,7 +60,7 @@ def linear_search(arr, hedef):
 
 Her adımda arama aralığını yarıya böler. Ortadaki eleman hedeften küçükse sağa, büyükse sola odaklanır.
 
-> ⚠️ **Ön Şart:** Liste **mutlaka sıralı** olmalıdır.
+>  **Ön Şart:** Liste **mutlaka sıralı** olmalıdır.
 
 ```python
 def binary_search(arr, hedef):
@@ -100,7 +86,7 @@ def binary_search(arr, hedef):
 
 √n büyüklüğünde bloklar halinde ileri zıplayarak hedefin hangi blokta olduğunu bulur, ardından o blokta doğrusal arama yapar.
 
-> ⚠️ **Ön Şart:** Liste **sıralı** olmalıdır.
+>  **Ön Şart:** Liste **sıralı** olmalıdır.
 
 ```python
 def jump_search(arr, hedef):
@@ -243,7 +229,7 @@ Listem sıralı mı?
 ├─ Hayır → Linear Search
 └─ Evet
    ├─ Küçük/orta boyut → Jump Search
-   └─ Büyük boyut      → Binary Search ✅ (en hızlı)
+   └─ Büyük boyut      → Binary Search  (en hızlı)
 ```
 
 ### Sıralama Algoritması Seçimi
@@ -251,13 +237,13 @@ Listem sıralı mı?
 ```
 Veri boyutu nedir?
 ├─ Küçük (< 20 eleman)
-│  ├─ Neredeyse sıralı → Insertion Sort ✅
+│  ├─ Neredeyse sıralı → Insertion Sort 
 │  └─ Rastgele         → Selection Sort
 ├─ Orta (20–1000 eleman)
 │  └─ Shell Sort veya Insertion Sort
 └─ Büyük (1000+ eleman)
-   ├─ Kararlılık gerekli → Merge Sort ✅
-   └─ Genel amaç        → Quick Sort ✅
+   ├─ Kararlılık gerekli → Merge Sort 
+   └─ Genel amaç        → Quick Sort 
 ```
 
 ### Performans Özeti
@@ -331,12 +317,12 @@ hedef = 42                                     # aranacak değer
 ## Proje Yapısı
 
 ```
-📁 proje/
+ proje/
 └── main.py      # Tüm algoritmalar ve test kodu
 ```
 
 ---
+Hazırlayan
+Enes ALKİRAZ Öğrenci No: 25019921033 Bartın Üniversitesi - Yapay Zeka Operatörlüğü
 
-## Lisans
-
-Bu proje eğitim amaçlı hazırlanmıştır. Dilediğiniz gibi kullanabilir ve değiştirebilirsiniz.
+Bu proje, makine öğrenmesi dersi kapsamında eğitim amaçlıdır.
