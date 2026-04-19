@@ -4,7 +4,7 @@ Python ile geliştirilmiş, temel arama ve sıralama algoritmalarını bir arada
 
 ## Proje Hakkında
 
-Bu proje, yazılım geliştirme süreçlerinde en sık kullanılan **3 arama** ve **6 sıralama** algoritmasını Python ile sıfırdan implement eder. Akademik bir kaynak olarak tasarlanmıştır; her fonksiyon satır satır Türkçe yorumlarla açıklanmış, `__main__` bloğu ise algoritmaların çıktı ve performanslarını karşılaştırmalı olarak gösterir.
+Bu proje, yazılım geliştirme süreçlerinde en sık kullanılan **3 arama** ve **6 sıralama** algoritmasını Python ile sıfırdan implement eder. Her fonksiyon satır satır Türkçe yorumlarla açıklanmış, `__main__` bloğu ise algoritmaların çıktı ve performanslarını karşılaştırmalı olarak gösterir.
 
 **Kapsanan algoritmalar:**
 
