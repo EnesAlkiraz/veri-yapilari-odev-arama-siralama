@@ -204,17 +204,17 @@ while aralik > 0:
 
 ## Big-O Karmaşıklık Tablosu
 
-| Algoritma      | En İyi    | Ortalama    | En Kötü     | Bellek  | Kararlı mı? |
-|----------------|-----------|-------------|-------------|---------|-------------|
-| Linear Search  | O(1)      | O(n)        | O(n)        | O(1)    | —           |
-| Binary Search  | O(1)      | O(log n)    | O(log n)    | O(1)    | —           |
-| Jump Search    | O(1)      | O(√n)       | O(√n)       | O(1)    | —           |
-| Bubble Sort    | O(n)      | O(n²)       | O(n²)       | O(1)    | ✅ Evet     |
-| Selection Sort | O(n²)     | O(n²)       | O(n²)       | O(1)    | ❌ Hayır    |
-| Insertion Sort | O(n)      | O(n²)       | O(n²)       | O(1)    | ✅ Evet     |
-| Merge Sort     | O(n log n)| O(n log n)  | O(n log n)  | O(n)    | ✅ Evet     |
-| Quick Sort     | O(n log n)| O(n log n)  | O(n²)       | O(log n)| ❌ Hayır    |
-| Shell Sort     | O(n log n)| O(n log² n) | O(n²)       | O(1)    | ❌ Hayır    |
+| Algoritma      | En İyi    | Ortalama    | En Kötü     | Bellek  | Kararlı mı?|
+|----------------|-----------|-------------|-------------|---------|-----------|
+| Linear Search  | O(1)      | O(n)        | O(n)        | O(1)    | —         |
+| Binary Search  | O(1)      | O(log n)    | O(log n)    | O(1)    | —         |
+| Jump Search    | O(1)      | O(√n)       | O(√n)       | O(1)    | —         |
+| Bubble Sort    | O(n)      | O(n²)       | O(n²)       | O(1)    |  Evet     |
+| Selection Sort | O(n²)     | O(n²)       | O(n²)       | O(1)    |  Hayır    |
+| Insertion Sort | O(n)      | O(n²)       | O(n²)       | O(1)    |  Evet     |
+| Merge Sort     | O(n log n)| O(n log n)  | O(n log n)  | O(n)    |  Evet     |
+| Quick Sort     | O(n log n)| O(n log n)  | O(n²)       | O(log n)|  Hayır    |
+| Shell Sort     | O(n log n)| O(n log² n) | O(n²)       | O(1)    |  Hayır    |
 
 > **Not:** Kararlı (stable) algoritma, eşit değerli elemanların orijinal sırasını korur.
 
