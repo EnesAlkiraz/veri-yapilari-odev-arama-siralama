@@ -325,4 +325,4 @@ hedef = 42                                     # aranacak değer
 Hazırlayan:
 Enes ALKİRAZ Öğrenci No: 25019921033 Bartın Üniversitesi - Yapay Zeka Operatörlüğü
 
-Bu proje, makine öğrenmesi dersi kapsamında eğitim amaçlıdır.
+Bu proje eğitim amaçlı hazırlanmıştır.
