@@ -1,97 +1,342 @@
-# Arama ve Sıralama Algoritmaları – Python Uygulaması
+# 🔍 Arama ve Sıralama Algoritmaları
 
-## Genel Bakış
-Bu proje, temel arama ve sıralama algoritmalarının Python ile uygulanmasını ve çalışma mantıklarının anlaşılmasını amaçlamaktadır. Ayrıca farklı algoritmaların performans farklarını gözlemlemek için basit bir karşılaştırma mekanizması içerir.
+Python ile geliştirilmiş, temel arama ve sıralama algoritmalarını bir arada sunan eğitim odaklı bir proje. Her algoritma; çalışma mantığı, zaman karmaşıklığı ve kullanım senaryoları açısından detaylıca açıklanmış ve yorumlanmıştır.
 
-Kod içerisinde hem klasik yöntemler hem de daha optimize yaklaşımlar birlikte ele alınmıştır.
-## İçerik
+---
 
-### Arama Algoritmaları
-- Linear Search (Doğrusal Arama)
-- Binary Search (İkili Arama)
-- Jump Search (Atlamalı Arama)
+## 📋 İçindekiler
 
-### Sıralama Algoritmaları
-- Bubble Sort
-- Selection Sort
-- Insertion Sort
-- Merge Sort
-- Quick Sort
-- Shell Sort
+- [Proje Hakkında](#proje-hakkında)
+- [Algoritmalara Genel Bakış](#algoritmalara-genel-bakış)
+- [Arama Algoritmaları](#arama-algoritmaları)
+- [Sıralama Algoritmaları](#sıralama-algoritmaları)
+- [Big-O Karmaşıklık Tablosu](#big-o-karmaşıklık-tablosu)
+- [Algoritma Karşılaştırması](#algoritma-karşılaştırması)
+- [Nasıl Çalıştırılır](#nasıl-çalıştırılır)
+
+---
+
+## Proje Hakkında
+
+Bu proje, yazılım geliştirme süreçlerinde en sık kullanılan **3 arama** ve **6 sıralama** algoritmasını Python ile sıfırdan implement eder. Akademik bir kaynak olarak tasarlanmıştır; her fonksiyon satır satır Türkçe yorumlarla açıklanmış, `__main__` bloğu ise algoritmaların çıktı ve performanslarını karşılaştırmalı olarak gösterir.
+
+**Kapsanan algoritmalar:**
+
+| Kategori    | Algoritmalar |
+|-------------|--------------|
+| Arama       | Linear Search, Binary Search, Jump Search |
+| Sıralama    | Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, Shell Sort |
+
+---
+
+## Algoritmalara Genel Bakış
+
+```
+Girdi: [64, 34, 25, 12, 22, 11, 90, 5, 45, 1]
+
+Bubble Sort    → [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+Selection Sort → [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+Insertion Sort → [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+Merge Sort     → [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+Quick Sort     → [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+Shell Sort     → [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+
+Hedef (22) için:
+Linear Search  → index 4  (sırasız listede)
+Binary Search  → index 4  (sıralı listede)
+Jump Search    → index 4  (sıralı listede)
+```
+
+---
 
 ## Arama Algoritmaları
 
-### Linear Search
-Liste baştan sona kadar taranarak her eleman hedef değer ile karşılaştırılır.
-- Sıralama gerektirmez
-- Küçük veri setlerinde kullanılabilir
-- Zaman karmaşıklığı: O(n)
+### 1. Linear Search (Doğrusal Arama)
 
-### Binary Search
-Sıralı bir liste üzerinde çalışır ve arama alanını her adımda ikiye böler.
-- Sadece sıralı listelerde çalışır
-- Büyük veri setlerinde oldukça hızlıdır
-- Zaman karmaşıklığı: O(log n)
+Listenin en başından başlayarak her elemanı sırayla hedef değerle karşılaştırır. En basit arama yöntemidir.
 
-### Jump Search
-Liste belirli bloklara bölünerek ilerlenir. Blok içinde doğrusal arama yapılır.
-- Sıralı veri gerektirir
-- Blok boyutu genellikle √n olarak seçilir
-- Zaman karmaşıklığı: O(√n)
+```python
+def linear_search(arr, hedef):
+    for i in range(len(arr)):
+        if arr[i] == hedef:
+            return i
+    return -1
+```
+
+**Ne zaman kullanılır?**
+- Liste sırasız olduğunda
+- Veri seti çok küçük olduğunda
+- Tek seferlik bir arama yapılacağında
+
+---
+
+### 2. Binary Search (İkili Arama)
+
+Her adımda arama aralığını yarıya böler. Ortadaki eleman hedeften küçükse sağa, büyükse sola odaklanır.
+
+> ⚠️ **Ön Şart:** Liste **mutlaka sıralı** olmalıdır.
+
+```python
+def binary_search(arr, hedef):
+    dusuk, yuksek = 0, len(arr) - 1
+    while dusuk <= yuksek:
+        orta = (dusuk + yuksek) // 2
+        if arr[orta] == hedef:
+            return orta
+        elif arr[orta] < hedef:
+            dusuk = orta + 1
+        else:
+            yuksek = orta - 1
+    return -1
+```
+
+**Ne zaman kullanılır?**
+- Liste sıralı ve büyük olduğunda
+- Tekrarlı aramalar yapılacağında
+
+---
+
+### 3. Jump Search (Adımlamalı Arama)
+
+√n büyüklüğünde bloklar halinde ileri zıplayarak hedefin hangi blokta olduğunu bulur, ardından o blokta doğrusal arama yapar.
+
+> ⚠️ **Ön Şart:** Liste **sıralı** olmalıdır.
+
+```python
+def jump_search(arr, hedef):
+    n = len(arr)
+    adim = int(math.sqrt(n))
+    # Blok bul, sonra doğrusal ara
+```
+
+**Ne zaman kullanılır?**
+- Sıralı, büyük listelerde
+- Binary Search'ten daha az karşılaştırma yapılmak istendiğinde (bazı sistemlerde)
+
+---
 
 ## Sıralama Algoritmaları
 
-### Bubble Sort
-Komşu elemanlar karşılaştırılarak büyük olanlar sağa doğru kaydırılır.
-- Basit yapılıdır
-- Büyük veri setlerinde verimsizdir
-- Zaman karmaşıklığı: O(n²)
+### 1. Bubble Sort (Kabarcık Sıralama)
 
-### Selection Sort
-Her turda en küçük eleman bulunur ve doğru konumuna yerleştirilir.
-- Swap sayısı azdır
-- Performans olarak düşüktür
-- Zaman karmaşıklığı: O(n²)
-
-### Insertion Sort
-Liste sıralı ve sırasız olmak üzere iki parçaya ayrılır. Yeni eleman doğru yere yerleştirilir.
-- Küçük veya kısmen sıralı verilerde etkilidir
-- Zaman karmaşıklığı: O(n²)
-
-### Merge Sort
-Liste sürekli ikiye bölünür ve sıralı şekilde birleştirilir.
-- Böl ve yönet (divide & conquer) mantığı kullanır
-- Stabil ve güvenilir bir algoritmadır
-- Zaman karmaşıklığı: O(n log n)
-
-### Quick Sort
-Bir pivot seçilerek liste küçük ve büyük olmak üzere ikiye ayrılır.
-- Pratikte en hızlı algoritmalardan biridir
-- Ortalama performans: O(n log n)
-- En kötü durumda: O(n²)
-
-### Shell Sort
-Insertion sort’un geliştirilmiş halidir. Belirli aralıklarla (gap) karşılaştırma yapar.
-- Gap değeri zamanla azaltılır
-- Orta seviyede performans sunar
-- Zaman karmaşıklığı değişkendir
-
-## Performans Ölçümü:
-Sıralama algoritmalarının çalışma süresi `time` modülü kullanılarak ölçülmektedir.
-Kodda kullanılan mantık:
+Komşu elemanları kıyaslayarak büyük olanı sağa doğru iter. Her turda en büyük eleman listenin sonuna "kabarcık" gibi yerleşir.
 
 ```python
-def zaman_olc(fonksiyon, arr):
-    basla = time.time()
-    fonksiyon(arr.copy())
-    bitir = time.time()
-    return round(bitir - basla, 6)
+for i in range(n):
+    for j in range(0, n - i - 1):
+        if arr[j] > arr[j + 1]:
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+```
 
-[64, 34, 25, 12, 22, 11, 90, 5, 45, 1]
+**Özellikler:** Anlaşılması en kolay algoritmadır ancak büyük veri setlerinde yavaştır.
 
-python main.py
 ---
-### 👨‍💻 Hazırlayan
-**Enes ALKİRAZ** 🆔 Öğrenci No: **25019921033** 🏫 Bartın Üniversitesi - Yapay Zeka Operatörlüğü
-Veri Yapıları Ve Algoritma dersi arama ve sıralama algoritmaları projesi
 
+### 2. Selection Sort (Seçmeli Sıralama)
+
+Her adımda sıralanmamış kısmın en küçük elemanını bulup listenin başına taşır.
+
+```python
+for i in range(len(arr)):
+    en_kucuk = i
+    for j in range(i + 1, len(arr)):
+        if arr[j] < arr[en_kucuk]:
+            en_kucuk = j
+    arr[i], arr[en_kucuk] = arr[en_kucuk], arr[i]
+```
+
+**Özellikler:** Her zaman tam olarak n(n-1)/2 karşılaştırma yapar. Takas sayısı azdır.
+
+---
+
+### 3. Insertion Sort (Araya Ekleme)
+
+Listenin başını sıralı kabul eder, yeni her elemanı sıralı kısmın içindeki doğru konuma yerleştirir.
+
+```python
+for i in range(1, len(arr)):
+    anahtar = arr[i]
+    j = i - 1
+    while j >= 0 and anahtar < arr[j]:
+        arr[j + 1] = arr[j]
+        j -= 1
+    arr[j + 1] = anahtar
+```
+
+**Özellikler:** Küçük veya neredeyse sıralı listelerde çok verimlidir.
+
+---
+
+### 4. Merge Sort (Birleştirmeli Sıralama)
+
+Böl-ve-fethet yaklaşımıyla çalışır: listeyi tek elemanlara kadar böler, sonra sıralı şekilde birleştirir.
+
+```python
+def merge_sort(arr):
+    if len(arr) > 1:
+        orta = len(arr) // 2
+        sol = merge_sort(arr[:orta])
+        sag = merge_sort(arr[orta:])
+        # sol ve sag'ı birleştir
+```
+
+**Özellikler:** Kararlı (stable) bir algoritmadır. Büyük veri setlerinde güvenilir performans sunar. Ekstra bellek gerektirir.
+
+---
+
+### 5. Quick Sort (Hızlı Sıralama)
+
+Bir pivot seçer; küçükleri sola, büyükleri sağa yerleştirir ve her iki yarıyı özyinelemeli olarak sıralar.
+
+```python
+def quick_sort(arr):
+    pivot = arr[len(arr) // 2]
+    sol   = [x for x in arr if x < pivot]
+    orta  = [x for x in arr if x == pivot]
+    sag   = [x for x in arr if x > pivot]
+    return quick_sort(sol) + orta + quick_sort(sag)
+```
+
+**Özellikler:** Pratikte en hızlı algoritmalardan biridir. Python, Java, C++ gibi dillerin standart sort fonksiyonlarında kullanılır.
+
+---
+
+### 6. Shell Sort
+
+Insertion Sort'un gelişmiş halidir. Başlangıçta büyük bir aralıkla karşılaştırma yapar ve aralığı giderek küçülterek klasik Insertion Sort'a dönüşür.
+
+```python
+aralik = n // 2
+while aralik > 0:
+    # aralik kadar uzaktaki elemanları insertion sort mantığıyla sırala
+    aralik //= 2
+```
+
+**Özellikler:** Insertion Sort'tan belirgin şekilde hızlıdır. Ek bellek gerektirmez.
+
+---
+
+## Big-O Karmaşıklık Tablosu
+
+| Algoritma      | En İyi    | Ortalama    | En Kötü     | Bellek  | Kararlı mı? |
+|----------------|-----------|-------------|-------------|---------|-------------|
+| Linear Search  | O(1)      | O(n)        | O(n)        | O(1)    | —           |
+| Binary Search  | O(1)      | O(log n)    | O(log n)    | O(1)    | —           |
+| Jump Search    | O(1)      | O(√n)       | O(√n)       | O(1)    | —           |
+| Bubble Sort    | O(n)      | O(n²)       | O(n²)       | O(1)    | ✅ Evet     |
+| Selection Sort | O(n²)     | O(n²)       | O(n²)       | O(1)    | ❌ Hayır    |
+| Insertion Sort | O(n)      | O(n²)       | O(n²)       | O(1)    | ✅ Evet     |
+| Merge Sort     | O(n log n)| O(n log n)  | O(n log n)  | O(n)    | ✅ Evet     |
+| Quick Sort     | O(n log n)| O(n log n)  | O(n²)       | O(log n)| ❌ Hayır    |
+| Shell Sort     | O(n log n)| O(n log² n) | O(n²)       | O(1)    | ❌ Hayır    |
+
+> **Not:** Kararlı (stable) algoritma, eşit değerli elemanların orijinal sırasını korur.
+
+---
+
+## Algoritma Karşılaştırması
+
+### Arama Algoritması Seçimi
+
+```
+Listem sıralı mı?
+├─ Hayır → Linear Search
+└─ Evet
+   ├─ Küçük/orta boyut → Jump Search
+   └─ Büyük boyut      → Binary Search ✅ (en hızlı)
+```
+
+### Sıralama Algoritması Seçimi
+
+```
+Veri boyutu nedir?
+├─ Küçük (< 20 eleman)
+│  ├─ Neredeyse sıralı → Insertion Sort ✅
+│  └─ Rastgele         → Selection Sort
+├─ Orta (20–1000 eleman)
+│  └─ Shell Sort veya Insertion Sort
+└─ Büyük (1000+ eleman)
+   ├─ Kararlılık gerekli → Merge Sort ✅
+   └─ Genel amaç        → Quick Sort ✅
+```
+
+### Performans Özeti
+
+| Durum | Önerilen Algoritma | Neden? |
+|---|---|---|
+| Küçük, sırasız liste | Linear Search | Basit, ek şart yok |
+| Büyük, sıralı liste | Binary Search | O(log n) ile inanılmaz hız |
+| Neredeyse sıralı liste | Insertion Sort | En iyi durumda O(n) |
+| Büyük, genel amaçlı | Quick Sort | Ortalamada en hızlı |
+| Kararlılık kritik | Merge Sort | Sabit O(n log n), kararlı |
+| Bellek kısıtlıysa | Shell Sort | O(1) ekstra bellek |
+
+---
+
+## Nasıl Çalıştırılır
+
+### Gereksinimler
+
+- Python 3.x (standart kütüphaneler kullanılır, ek kurulum gerekmez)
+
+### Çalıştırma
+
+```bash
+# Repoyu klonla
+git clone https://github.com/kullanici-adi/repo-adi.git
+cd repo-adi
+
+# Dosyayı doğrudan çalıştır
+python main.py
+```
+
+### Beklenen Çıktı
+
+```
+Orijinal Liste: [64, 34, 25, 12, 22, 11, 90, 5, 45, 1]
+----------------------------------------
+1. Bubble Sort:    [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+2. Selection Sort: [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+3. Insertion Sort: [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+4. Merge Sort:     [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+5. Quick Sort:     [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+6. Shell Sort:     [1, 5, 11, 12, 22, 25, 34, 45, 64, 90]
+
+Arama Testi (Hedef: 22)
+- Linear Search Indeksi : 4  (sırasız listede)
+- Binary Search Indeksi : 4  (sirali listede)
+- Jump Search Indeksi   : 4  (sirali listede)
+
+Performans Karsilastirmasi:
+----------------------------------------
+bubble_sort         : 0.000012 saniye
+selection_sort      : 0.000008 saniye
+insertion_sort      : 0.000005 saniye
+merge_sort          : 0.000021 saniye
+quick_sort          : 0.000009 saniye
+shell_sort          : 0.000006 saniye
+```
+
+### Kendi Verinizle Test Etme
+
+`main.py` dosyasındaki `test_verisi` ve `hedef` değişkenlerini değiştirerek farklı verilerle deneyebilirsiniz:
+
+```python
+test_verisi = [15, 3, 88, 42, 7, 99, 1, 56]  # kendi listeniz
+hedef = 42                                     # aranacak değer
+```
+
+---
+
+## Proje Yapısı
+
+```
+📁 proje/
+└── main.py      # Tüm algoritmalar ve test kodu
+```
+
+---
+
+## Lisans
+
+Bu proje eğitim amaçlı hazırlanmıştır. Dilediğiniz gibi kullanabilir ve değiştirebilirsiniz.
